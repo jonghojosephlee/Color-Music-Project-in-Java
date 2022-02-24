@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<syntona version="0.5.22">
+<module bundle="core" id="0" name="top3" type="patch">
+<view height="0" width="0" xpos="20" ypos="20"/>
+<modules>
+<module bundle="jsyn" id="0" name="voice" type="voice">
+<view height="208" width="96" xpos="283" ypos="114"/>
+<modules>
+<module bundle="jsyn" id="0" name="frequency" type="aInput">
+<view height="48" width="96" xpos="33" ypos="22"/>
+<proxy max="8000.0" min="40.0" name="frequency" value="293.6647679174076" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="1" name="amplitude" type="aInput">
+<view height="48" width="96" xpos="35" ypos="104"/>
+<proxy max="1.0" min="0.0" name="amplitude" value="0.5" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="2" name="output" type="aOutput">
+<view height="48" width="96" xpos="650" ypos="20"/>
+<jack max="1.0" min="0.0" name="input" value="0.0" valueAdded="false"/>
+</module>
+<module bundle="jsyn" id="3" name="sineOscPM" type="sineOscPM">
+<view height="108" width="96" xpos="258" ypos="38"/>
+<jack max="8000.0" min="40.0" name="frequency" value="123.31018671444815" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="1.0" valueAdded="false"/>
+<jack max="10.0" min="0.99" name="modulation" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="4" name="sineOsc" type="sineOsc">
+<view height="88" width="96" xpos="167" ypos="209"/>
+<jack max="700.0" min="290.0" name="frequency" value="290.0" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="1.0" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="5" name="aplus" type="a+">
+<view height="88" width="96" xpos="344" ypos="219"/>
+<jack max="1.0" min="0.1" name="inputA" value="0.7530864" valueAdded="false"/>
+<jack max="1.0" min="0.1" name="inputB" value="0.8518519" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="6" name="phaseShifter" type="phaseShifter">
+<view height="128" width="96" xpos="376" ypos="21"/>
+<jack max="1.0" min="0.0" name="input" value="0.0" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="offset" value="0.5" valueAdded="false"/>
+<jack max="0.9" min="0.0" name="feedback" value="0.03210859210507347" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="depth" value="0.9958848" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="7" name="PhaserOffset" type="aInput">
+<view height="48" width="96" xpos="43" ypos="198"/>
+<proxy max="5.0" min="0.5" name="PhaserOffset" value="0.5" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="8" name="monoRdr" type="monoRdr">
+<view height="108" width="96" xpos="602" ypos="333"/>
+<jack name="dataQueue"/>
+<jack max="1.0" min="0.0" name="amplitude" value="1.0" valueAdded="false"/>
+<jack max="10.0" min="0.99" name="rate" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="9" name="segEnv" type="segEnv">
+<view height="108" width="96" xpos="484" ypos="356"/>
+<envelope immediate="true">
+<frames>
+<frame dur="0.01914979261264613" value="0.9956140350877193"/>
+<frame dur="0.011977910417817022" value="0.008771929824561403"/>
+<frame dur="0.004585412450462553" value="0.0"/>
+<frame dur="0.00942205391324586" value="1.0"/>
+<frame dur="0.009053846793928302" value="0.008771929824561403"/>
+<frame dur="0.0029217424209156267" value="1.0"/>
+<frame dur="0.01802783508748726" value="0.0"/>
+<frame dur="0.0022949261547213357" value="1.0"/>
+<frame dur="0.030798305309783558" value="0.0"/>
+<frame dur="0.44934187375295787" value="0.0"/>
+</frames>
+<loops>
+<loop begin="0" end="8" name="sustain"/>
+<loop begin="-1" end="-1" name="release"/>
+</loops>
+</envelope>
+<jack name="on"/>
+<jack name="off"/>
+<jack name="queue"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="10" name="highPass" type="highPass">
+<view height="128" width="96" xpos="489" ypos="140"/>
+<jack max="1.0" min="0.0" name="input" value="0.0" valueAdded="false"/>
+<jack max="6000.0" min="40.0" name="frequency" value="530.68382" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="1.0" valueAdded="false"/>
+<jack max="10.0" min="0.1" name="Q" value="4.163896942289601" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="11" name="HPFreq" type="aInput">
+<view height="48" width="96" xpos="43" ypos="283"/>
+<proxy max="6000.0" min="40.0" name="HPFreq" value="530.68382" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="12" name="PulFreq" type="aInput">
+<view height="48" width="96" xpos="44" ypos="355"/>
+<proxy max="8000.0" min="40.0" name="PulFreq" value="1377.299104" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="13" name="PulWidth" type="aInput">
+<view height="48" width="96" xpos="48" ypos="431"/>
+<proxy max="1.0" min="0.1" name="PulWidth" value="0.10772713" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="14" name="pulseOsc" type="pulseOsc">
+<view height="108" width="96" xpos="328" ypos="347"/>
+<jack max="8000.0" min="40.0" name="frequency" value="1377.299104" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="1.0" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="width" value="0.10772713" valueAdded="false"/>
+<jack name="output"/>
+</module>
+</modules>
+<connections>
+<output id="0" jack="output">
+<input id="3" jack="frequency"/>
+</output>
+<output id="1" jack="output">
+<input id="3" jack="amplitude"/>
+</output>
+<output id="3" jack="output">
+<input id="6" jack="input"/>
+</output>
+<output id="4" jack="output">
+<input id="5" jack="inputB"/>
+<input id="5" jack="inputA"/>
+</output>
+<output id="5" jack="output">
+<input id="3" jack="modulation"/>
+</output>
+<output id="6" jack="output">
+<input id="10" jack="input"/>
+</output>
+<output id="7" jack="output">
+<input id="6" jack="offset"/>
+</output>
+<output id="8" jack="output">
+<input id="10" jack="amplitude"/>
+<input id="14" jack="amplitude"/>
+</output>
+<output id="9" jack="output">
+<input id="8" jack="dataQueue"/>
+</output>
+<output id="10" jack="output">
+<input id="2" jack="input"/>
+</output>
+<output id="11" jack="output">
+<input id="10" jack="frequency"/>
+</output>
+<output id="12" jack="output">
+<input id="14" jack="frequency"/>
+</output>
+<output id="13" jack="output">
+<input id="14" jack="width"/>
+</output>
+<output id="14" jack="output">
+<input id="10" jack="input"/>
+</output>
+</connections>
+<jack name="on"/>
+<jack name="off"/>
+<jack max="8000.0" min="40.0" name="frequency" value="293.6647679174076" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="0.5" valueAdded="false"/>
+<jack name="output"/>
+<jack max="5.0" min="0.5" name="PhaserOffset" value="0.5" valueAdded="false"/>
+<jack max="6000.0" min="40.0" name="HPFreq" value="530.68382" valueAdded="false"/>
+<jack max="8000.0" min="40.0" name="PulFreq" value="1377.299104" valueAdded="false"/>
+<jack max="1.0" min="0.1" name="PulWidth" value="0.10772713" valueAdded="false"/>
+</module>
+<module bundle="jsyn" id="1" name="lineOut" type="lineOut">
+<view height="68" width="96" xpos="543" ypos="110"/>
+<jack max="1.0" min="0.0" name="input0" value="0.0" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="input1" value="0.0" valueAdded="false"/>
+</module>
+<module bundle="core" id="2" name="knob" type="knob">
+<view height="60" width="68" xpos="27" ypos="21"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="5.0" min="0.5" name="in" value="0.5"/>
+<jack name="out"/>
+</module>
+<module bundle="core" id="3" name="knob2" type="knob">
+<view height="60" width="68" xpos="23" ypos="111"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="6000.0" min="40.0" name="in" value="530.68382"/>
+<jack name="out"/>
+</module>
+<module bundle="core" id="4" name="knob3" type="knob">
+<view height="60" width="68" xpos="24" ypos="185"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="8000.0" min="40.0" name="in" value="1377.299104"/>
+<jack name="out"/>
+</module>
+<module bundle="core" id="5" name="knob4" type="knob">
+<view height="60" width="68" xpos="24" ypos="296"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="1.0" min="0.1" name="in" value="0.10772713"/>
+<jack name="out"/>
+</module>
+</modules>
+<connections>
+<output id="0" jack="output">
+<input id="1" jack="input0"/>
+<input id="1" jack="input1"/>
+</output>
+<output id="2" jack="out">
+<input id="0" jack="PhaserOffset"/>
+</output>
+<output id="3" jack="out">
+<input id="0" jack="HPFreq"/>
+</output>
+<output id="4" jack="out">
+<input id="0" jack="PulFreq"/>
+</output>
+<output id="5" jack="out">
+<input id="0" jack="PulWidth"/>
+</output>
+</connections>
+</module>
+</syntona>

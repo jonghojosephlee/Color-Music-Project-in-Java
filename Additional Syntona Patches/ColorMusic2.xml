@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<syntona version="0.5.22">
+<module bundle="core" id="0" name="top2" type="patch">
+<view height="0" width="0" xpos="20" ypos="20"/>
+<modules>
+<module bundle="jsyn" id="0" name="voice" type="voice">
+<view height="208" width="96" xpos="274" ypos="158"/>
+<modules>
+<module bundle="jsyn" id="0" name="frequency" type="aInput">
+<view height="48" width="96" xpos="32" ypos="26"/>
+<proxy max="900.0" min="40.0" name="frequency" value="990.807672" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="1" name="amplitude" type="aInput">
+<view height="48" width="96" xpos="45" ypos="92"/>
+<proxy max="1.0" min="0.99" name="amplitude" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="2" name="output" type="aOutput">
+<view height="48" width="96" xpos="651" ypos="257"/>
+<jack max="1.0" min="0.0" name="input" value="0.0" valueAdded="false"/>
+</module>
+<module bundle="jsyn" id="3" name="sawOsc" type="sawOsc">
+<view height="88" width="96" xpos="206" ypos="48"/>
+<jack max="900.0" min="40.0" name="frequency" value="990.807672" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="4" name="sawOscBL" type="sawOscBL">
+<view height="88" width="96" xpos="207" ypos="210"/>
+<jack max="250.0" min="40.0" name="frequency" value="990.807672" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="5" name="sawFreq" type="aInput">
+<view height="48" width="96" xpos="37" ypos="161"/>
+<proxy max="8000.0" min="40.0" name="sawFreq" value="990.807672" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="6" name="AmpFreq" type="aInput">
+<view height="48" width="96" xpos="55" ypos="241"/>
+<proxy max="1.0" min="0.99" name="AmpFreq" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="7" name="segEnv" type="segEnv">
+<view height="108" width="96" xpos="383" ypos="14"/>
+<envelope immediate="true">
+<frames>
+<frame dur="0.12626154475477686" value="1.0"/>
+<frame dur="0.0" value="1.0"/>
+<frame dur="0.058012061103546064" value="0.017543859649122806"/>
+<frame dur="0.09792629380881623" value="1.0"/>
+<frame dur="0.0664143261142976" value="0.0"/>
+<frame dur="0.08934724076913303" value="1.0"/>
+<frame dur="0.08190316974759565" value="0.0"/>
+<frame dur="0.5" value="0.0"/>
+</frames>
+<loops>
+<loop begin="0" end="5" name="sustain"/>
+<loop begin="-1" end="-1" name="release"/>
+</loops>
+</envelope>
+<jack name="on"/>
+<jack name="off"/>
+<jack name="queue"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="8" name="monoRdr" type="monoRdr">
+<view height="108" width="96" xpos="528" ypos="17"/>
+<jack name="dataQueue"/>
+<jack max="1.0" min="0.0" name="amplitude" value="1.0" valueAdded="false"/>
+<jack max="10.0" min="0.99" name="rate" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="9" name="lowPass" type="lowPass">
+<view height="128" width="96" xpos="489" ypos="263"/>
+<jack max="1.0" min="0.0" name="input" value="0.0" valueAdded="false"/>
+<jack max="6000.0" min="40.0" name="frequency" value="1342.416748" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="amplitude" value="1.0" valueAdded="false"/>
+<jack max="10.0" min="0.1" name="Q" value="4.80618478" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="10" name="Filter Freq" type="aInput">
+<view height="48" width="96" xpos="39" ypos="314"/>
+<proxy max="6000.0" min="40.0" name="Filter Freq" value="1342.416748" valueAdded="false"/>
+<jack name="output"/>
+</module>
+<module bundle="jsyn" id="11" name="Filter Q" type="aInput">
+<view height="48" width="96" xpos="37" ypos="408"/>
+<proxy max="10.0" min="0.1" name="Filter Q" value="4.80618478" valueAdded="false"/>
+<jack name="output"/>
+</module>
+</modules>
+<connections>
+<output id="0" jack="output">
+<input id="3" jack="frequency"/>
+</output>
+<output id="1" jack="output">
+<input id="3" jack="amplitude"/>
+</output>
+<output id="3" jack="output">
+<input id="9" jack="input"/>
+</output>
+<output id="4" jack="output">
+<input id="9" jack="input"/>
+</output>
+<output id="5" jack="output">
+<input id="4" jack="frequency"/>
+</output>
+<output id="6" jack="output">
+<input id="4" jack="amplitude"/>
+</output>
+<output id="7" jack="output">
+<input id="8" jack="dataQueue"/>
+</output>
+<output id="8" jack="output">
+<input id="9" jack="amplitude"/>
+</output>
+<output id="9" jack="output">
+<input id="2" jack="input"/>
+</output>
+<output id="10" jack="output">
+<input id="9" jack="frequency"/>
+</output>
+<output id="11" jack="output">
+<input id="9" jack="Q"/>
+</output>
+</connections>
+<jack name="on"/>
+<jack name="off"/>
+<jack max="900.0" min="40.0" name="frequency" value="990.807672" valueAdded="false"/>
+<jack max="1.0" min="0.99" name="amplitude" value="0.99" valueAdded="false"/>
+<jack name="output"/>
+<jack max="8000.0" min="40.0" name="sawFreq" value="990.807672" valueAdded="false"/>
+<jack max="1.0" min="0.99" name="AmpFreq" value="0.99" valueAdded="false"/>
+<jack max="6000.0" min="40.0" name="Filter Freq" value="1342.416748" valueAdded="false"/>
+<jack max="10.0" min="0.1" name="Filter Q" value="4.80618478" valueAdded="false"/>
+</module>
+<module bundle="jsyn" id="1" name="lineOut" type="lineOut">
+<view height="68" width="96" xpos="571" ypos="120"/>
+<jack max="1.0" min="0.0" name="input0" value="0.0" valueAdded="false"/>
+<jack max="1.0" min="0.0" name="input1" value="0.0" valueAdded="false"/>
+</module>
+<module bundle="core" id="2" name="knob" type="knob">
+<view height="60" width="68" xpos="23" ypos="357"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="10.0" min="0.1" name="in" value="4.80618478"/>
+<jack name="out"/>
+</module>
+<module bundle="core" id="3" name="knob2" type="knob">
+<view height="60" width="68" xpos="26" ypos="22"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="8000.0" min="40.0" name="in" value="990.807672"/>
+<jack name="out"/>
+</module>
+<module bundle="core" id="4" name="knob3" type="knob">
+<view height="60" width="68" xpos="26" ypos="111"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="5.0" min="0.99" name="in" value="0.99"/>
+<jack name="out"/>
+</module>
+<module bundle="core" id="5" name="knob4" type="knob">
+<view height="60" width="68" xpos="32" ypos="239"/>
+<jack max="100.0" min="0.0" name="kick" value="0.0"/>
+<jack max="6000.0" min="40.0" name="in" value="1342.416748"/>
+<jack name="out"/>
+</module>
+</modules>
+<connections>
+<output id="0" jack="output">
+<input id="1" jack="input0"/>
+<input id="1" jack="input1"/>
+</output>
+<output id="2" jack="out">
+<input id="0" jack="Filter Q"/>
+</output>
+<output id="3" jack="out">
+<input id="0" jack="sawFreq"/>
+<input id="0" jack="frequency"/>
+</output>
+<output id="4" jack="out">
+<input id="0" jack="AmpFreq"/>
+<input id="0" jack="amplitude"/>
+</output>
+<output id="5" jack="out">
+<input id="0" jack="Filter Freq"/>
+</output>
+</connections>
+</module>
+</syntona>
